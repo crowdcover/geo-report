@@ -5,6 +5,8 @@
 // Our variables
 $body-font-family: Helvetica, Arial, sans-serif;
 $body-font-size:   14px;
+$body-font-weight: normal;
+$body-font-style: normal;
 $small-font-size:  $body-font-size * 0.875;
 $base-line-height: 1.5;
 $cursor-auto-value: auto;
@@ -93,15 +95,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: $brand-color;
+  color: $primary-color;
   text-decoration: none;
 
   &:visited {
-    color: darken($brand-color, 15%);
+    color: darken($primary-color, 15%);
   }
 
   &:hover {
-    color: $text-color;
+    color: $body-font-color;
     text-decoration: underline;
   }
 }
@@ -216,7 +218,7 @@ pre {
     }
 
     .page-link {
-      color: $text-color;
+      color: $body-font-color;
       line-height: $base-line-height;
 
         // Gaps between nav items, but not on the first one
@@ -229,7 +231,7 @@ pre {
         position: absolute;
         top: 9px;
         right: 30px;
-        background-color: $background-color;
+        background-color: $body-bg;
         border: 1px solid $grey-color-light;
         border-radius: 5px;
         text-align: right;

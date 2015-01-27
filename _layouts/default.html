@@ -9,42 +9,17 @@
     <!--[if lt IE 8]>
         <div data-alert class="alert-box alert radius" class="browsehappy">Please <a href="http://browsehappy.com/">upgrade your browser</a>. <a href="#" class="close">&times;</a></div>
     <![endif]-->
-    <header id="header">
-      <div class="row">
+    <header id="header" class="fill-dark">
         <div class="small-12 columns">
-          <section class="mvm">
+          <section class="mvs">
             <ul class="inline-list">
               {% include nav.html %}
             </ul>
           </section>
         </div>
-      </div>
     </header>
 
-    <div class="row">
-      <section role="main">
-        <div class="small-12 columns">
-
-          {{ content }}
-
-        </div>
-      </section>
-    </div>
-
-
-    <footer class="site-footer fill-gray keyline-top keyline-bottom" role="contentinfo">
-      <div class="row">
-        <div class="large-12 columns">
-          <small class="quiet copyright right pvs">
-            <a href="https://twitter.com/{{ site.twitter }}">
-              <i class="fa fa-twitter"></i> @{{ site.twitter }}
-            </a><a href="https://github.com/{{ site.github }}/">
-              <i class="fa fa-github"></i> @{{ site.github }}
-            </a> {{ site.year }}.
-          </small>
-        </div>
-      </div>
-    </footer>
+    {{ content }}
 
     <!-- close the off-canvas menu -->
     <a class="exit-off-canvas"></a>

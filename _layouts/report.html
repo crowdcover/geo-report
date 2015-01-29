@@ -16,12 +16,23 @@
 
 <div id="report-container" class="small-12">
   <div id="report" class="small-12 medium-4 columns keyline-right fill-white">
+
     {% for section in page.sections %}
       <section class="animate{% if forloop.first %}active{% endif %}">
         <h3 class="serif keyline-bottom pvs">{{ section.title }}</h3>
         {% if forloop.first %}
           <div class="small"><strong>By {{page.author}}</strong></div>
           <div class="small serif mbs">{{page.date}}</div>
+        {% endif %}
+        <!-- display section banner_image.
+             If first section and there is no section banner_image specified, use  page banner_image -->
+        {% if forloop.first and section.banner_image %}
+          <figure>
+            <img src="{{section.banner_image}}" alt="banner image">
+            <figcaption>{{section.banner_image_caption}}</figcaption>
+            <figcaption>{{section.banner_image_source}}</figcaption>
+          </figure>
+        {% else %}
           <figure>
             <img src="{{page.banner_image}}" alt="banner image">
             <figcaption>{{page.banner_image_caption}}</figcaption>
@@ -30,8 +41,10 @@
         {% endif %}
 
         {{ section.body | markdownify }}
+
       </section>
     {% endfor %}
+
     {% if page.footer %} <aside class="small quiet pvs keyline-top">{{page.footer}}</aside> {% endif %}
   </div>
 

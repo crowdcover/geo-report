@@ -1895,11 +1895,11 @@ td {
 
 /* Default Link Styles */
 a {
-  color: #008CBA;
+  color: $link-color;
   text-decoration: none;
   line-height: inherit; }
   a:hover, a:focus {
-    color: #0078a0; }
+    color: $link-hover-color; }
   a img {
     border: none; }
 
@@ -1907,7 +1907,7 @@ a {
 p {
   font-family: inherit;
   font-weight: normal;
-  font-size: 1rem;
+  font-size: $body-font-size;
   line-height: 1.6;
   margin-bottom: 1.25rem;
   text-rendering: optimizeLegibility; }
@@ -1921,7 +1921,7 @@ p {
 
 /* Default header styles */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: $header-font-family;
   font-weight: normal;
   font-style: normal;
   color: #222222;
@@ -1982,7 +1982,7 @@ small {
   line-height: inherit; }
 
 code {
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  font-family: $mono-font-family;
   font-weight: normal;
   color: #333333;
   background-color: #f8f8f8;
@@ -2276,7 +2276,7 @@ blockquote p {
 
 .label {
   font-weight: normal;
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: $label-font-family;
   text-align: center;
   text-decoration: none;
   line-height: 1;

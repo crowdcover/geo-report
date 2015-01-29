@@ -4,24 +4,35 @@
 <body>
 
 <nav class="small-12 columns fill-dark phn keyline-bottom">
-  <ul class="small-12 medium-4 columns keyline-right mhn">
+  <ul class="small-12 medium-4 columns keyline-right man">
     <li>
-      <h3 class="left"><a href="#">{{page.title}}</a></h3>
+      <h3 class="center"><a href="#">{{page.title}}</a></h3>
     </li>
   </ul>
-  <ul class="medium-8 columns inline-list right mvs">
-    <li class="right phs"><a href="#">home</a></li>
+  <ul class="medium-8 columns inline-list right man">
+    <li class="right pas"><a href="#">home</a></li>
   </ul>
 </nav>
 
 <div id="report-container" class="small-12">
   <div id="report" class="small-12 medium-4 columns keyline-right fill-white">
     {% for section in page.sections %}
-      <section>
-        <h2>{{ section.title }}</h2>
-        {{ section.text }}
+      <section class="animate{% if forloop.first %}active{% endif %}">
+        <h3 class="serif keyline-bottom pvs">{{ section.title }}</h3>
+        {% if forloop.first %}
+          <div class="small"><strong>By {{page.author}}</strong></div>
+          <div class="small serif mbs">{{page.date}}</div>
+          <figure>
+            <img src="{{page.banner_image}}" alt="banner image">
+            <figcaption>{{page.banner_image_caption}}</figcaption>
+            <figcaption>{{page.banner_image_source}}</figcaption>
+          </figure>
+        {% endif %}
+
+        {{ section.body | markdownify }}
       </section>
     {% endfor %}
+    {% if page.footer %} <aside class="small quiet pvs keyline-top">{{page.footer}}</aside> {% endif %}
   </div>
 
   <div id="map" class="small-12 medium-8 columns"></div>
@@ -34,6 +45,7 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{site.baseurl}}js/vendor/jquery.js"><\/script>')</script>
+<script src="{{site.baseurl}}js/vendor/jquery.waypoints.js"></script>
 <script src="{{site.baseurl}}js/foundation.min.js"></script>
 <script src="{{site.baseurl}}js/app.js"></script>
 

@@ -3,7 +3,12 @@
 @charset "utf-8";
 
 // Our variables
-$body-font-family: Helvetica, Arial, sans-serif;
+$body-font-family: "Open Sans", serif, Helvetica, Arial, sans-serif;
+$header-font-family: $body-font-family;
+$label-font-family: $body-font-family;
+$serif-font-family: "DejaVuSerif", serif;
+$mono-font-family: Consolas, "Liberation Mono", Courier, monospace;
+
 $body-font-size:   14px;
 $body-font-weight: normal;
 $body-font-style: normal;
@@ -11,14 +16,19 @@ $small-font-size:  $body-font-size * 0.875;
 $base-line-height: 1.5;
 $cursor-auto-value: auto;
 
+
 $spacing-unit:     20px;
 
-$body-font-color:  #111;
+$body-font-color:  #222;
 $body-bg:          #fdfdfd;
-$primary-color:    #2a7ae2;
-$grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
+$primary-color:    #EE8433;
+$secondary-color:  #F0AD77;
+$grey-color:       #55514D;
+$grey-color-light: #C7C7C7;
+$grey-color-dark:  #2F2E2C;
+
+$link-color: $secondary-color;
+$link-hover-color: $primary-color;
 
 $button-font-family: $body-font-family;
 $button-color: #fff;
@@ -58,21 +68,39 @@ $on-laptop:        800px;
 //////////////////////////////////////////////////////
 
 body { margin:0; padding:0; min-width: 940px; }
-#report-container { position: absolute; top:53px; bottom:0; }
+#report-container { position: absolute; top:46px; bottom:0; }
 #map { position:absolute; top: 0; bottom:0; right: 0; }
-#report { position: absolute; top: 0; bottom: 0; overflow: scroll; }
 
-nav a {
-  color: #fafafa;
-  }
-  nav a:hover{
-    color: #ffa500;
-  }
-  nav h3{ margin-bottom: 0; }
-  nav ul{ margin-bottom: 0; padding: 6px 0; }
+#report {
+  position: absolute; top: 0; bottom: 0; overflow: scroll;
+  section { min-height: 100%; opacity: 0.2; margin-bottom: 40px; }
+  section.active { opacity: 1; }
+  img { display: block; margin: 2px auto 12px; }
+}
 
-.fill-dark { background-color: #222; }
-.fill-gray { background-color: #ddd; }
+nav {
+  a { color: $secondary-color; }
+  a:hover { color: $primary-color; }
+  h3{ margin-bottom: 0; }
+  ul{ margin-bottom: 0; list-style: none; }
+}
+
+figure{ margin: 12px 0 22px; }
+figcaption {
+  font-size: 0.65rem;
+  color: $grey-color-light;
+  margin-bottom: 6px;
+}
+
+.serif { font-family: $serif-font-family; }
+
+.small { font-size: 0.8rem; }
+.quiet { color: $grey-color-light; }
+
+.center { text-align: center; }
+
+.fill-dark { background-color: $grey-color-dark; }
+.fill-gray { background-color: $grey-color-light; }
 .fill-white { background-color: #fff; }
 
 .keyline-all { border: 1px solid #ccc; }
@@ -81,366 +109,11 @@ nav a {
 .keyline-top { border-top: 1px solid #ccc; }
 .keyline-bottom { border-bottom: 1px solid #ccc; }
 
-// below is Jekyll's _base.scss.  swap it out for custom styles
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
-%vertical-rhythm {
-  margin-bottom: $spacing-unit / 2;
-}
 
-img {
-  max-width: 100%;
-  vertical-align: middle;
-}
-
-figure > img {
-  display: block;
-}
-
-figcaption {
-  font-size: $small-font-size;
-}
-
-ul, ol {
-  margin-left: $spacing-unit;
-}
-
-li {
-  > ul,
-  > ol {
-   margin-bottom: 0;
- }
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 300;
-}
-
-a {
-  color: $primary-color;
-  text-decoration: none;
-
-  &:visited {
-    color: darken($primary-color, 15%);
-  }
-
-  &:hover {
-    color: $body-font-color;
-    text-decoration: underline;
-  }
-}
-
-blockquote {
-  color: $grey-color;
-  border-left: 4px solid $grey-color-light;
-  padding-left: $spacing-unit / 2;
-  font-size: 18px;
-  letter-spacing: -1px;
-  font-style: italic;
-
-  > :last-child {
-    margin-bottom: 0;
-  }
-}
-
-pre,
-code {
-  font-size: 15px;
-  border: 1px solid $grey-color-light;
-  border-radius: 3px;
-  background-color: #eef;
-}
-
-code {
-  padding: 1px 5px;
-}
-
-pre {
-  padding: 8px 12px;
-  overflow-x: scroll;
-
-  > code {
-    border: 0;
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-
-.wrapper {
-  max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-  max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: $spacing-unit;
-  padding-left: $spacing-unit;
-  @extend %clearfix;
-
-  @include media-query($on-laptop) {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-    padding-right: $spacing-unit / 2;
-    padding-left: $spacing-unit / 2;
-  }
-}
-
-%clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
-.icon {
-
-  > svg {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-
-    path {
-      fill: $grey-color;
-    }
-  }
-}
-
-// below is Jekyll's _layout.scss.  swap it out for custom styles
-/**
- * Site header
- */
- .site-header {
-  border-top: 5px solid $grey-color-dark;
-  border-bottom: 1px solid $grey-color-light;
-  min-height: 56px;
-
-    // Positioning context for the mobile navigation icon
-    position: relative;
-  }
-
-  .site-title {
-    font-size: 26px;
-    line-height: 56px;
-    letter-spacing: -1px;
-    margin-bottom: 0;
-    float: left;
-
-    &,
-    &:visited {
-      color: $grey-color-dark;
-    }
-  }
-
-  .site-nav {
-    float: right;
-    line-height: 56px;
-
-    .menu-icon {
-      display: none;
-    }
-
-    .page-link {
-      color: $body-font-color;
-      line-height: $base-line-height;
-
-        // Gaps between nav items, but not on the first one
-        &:not(:first-child) {
-          margin-left: 20px;
-        }
-      }
-
-      @include media-query($on-palm) {
-        position: absolute;
-        top: 9px;
-        right: 30px;
-        background-color: $body-bg;
-        border: 1px solid $grey-color-light;
-        border-radius: 5px;
-        text-align: right;
-
-        .menu-icon {
-          display: block;
-          float: right;
-          width: 36px;
-          height: 26px;
-          line-height: 0;
-          padding-top: 10px;
-          text-align: center;
-
-          > svg {
-            width: 18px;
-            height: 15px;
-
-            path {
-              fill: $grey-color-dark;
-            }
-          }
-        }
-
-        .trigger {
-          clear: both;
-          display: none;
-        }
-
-        &:hover .trigger {
-          display: block;
-          padding-bottom: 5px;
-        }
-
-        .page-link {
-          display: block;
-          padding: 5px 10px;
-        }
-      }
-    }
-
-
-
-/**
- * Site footer
- */
- .site-footer {
-  border-top: 1px solid $grey-color-light;
-  padding: $spacing-unit 0;
-}
-
-.footer-heading {
-  font-size: 18px;
-  margin-bottom: $spacing-unit / 2;
-}
-
-.contact-list,
-.social-media-list {
-  list-style: none;
-  margin-left: 0;
-}
-
-.footer-col-wrapper {
-  font-size: 15px;
-  color: $grey-color;
-  margin-left: -$spacing-unit / 2;
-  @extend %clearfix;
-}
-
-.footer-col {
-  float: left;
-  margin-bottom: $spacing-unit / 2;
-  padding-left: $spacing-unit / 2;
-}
-
-.footer-col-1 {
-  width: -webkit-calc(35% - (#{$spacing-unit} / 2));
-  width:         calc(35% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-2 {
-  width: -webkit-calc(20% - (#{$spacing-unit} / 2));
-  width:         calc(20% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-3 {
-  width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-  width:         calc(45% - (#{$spacing-unit} / 2));
-}
-
-@include media-query($on-laptop) {
-  .footer-col-1,
-  .footer-col-2 {
-    width: -webkit-calc(50% - (#{$spacing-unit} / 2));
-    width:         calc(50% - (#{$spacing-unit} / 2));
-  }
-
-  .footer-col-3 {
-    width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-    width:         calc(100% - (#{$spacing-unit} / 2));
-  }
-}
-
-@include media-query($on-palm) {
-  .footer-col {
-    float: none;
-    width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-    width:         calc(100% - (#{$spacing-unit} / 2));
-  }
-}
-
-
-
-/**
- * Page content
- */
- .page-content {
-  padding: $spacing-unit 0;
-}
-
-.page-heading {
-  font-size: 20px;
-}
-
-.post-list {
-  margin-left: 0;
-  list-style: none;
-
-  > li {
-    margin-bottom: $spacing-unit;
-  }
-}
-
-.post-meta {
-  font-size: $small-font-size;
-  color: $grey-color;
-}
-
-.post-link {
-  display: block;
-  font-size: 24px;
-}
-
-
-
-/**
- * Posts
- */
- .post-header {
-  margin-bottom: $spacing-unit;
-}
-
-.post-title {
-  font-size: 42px;
-  letter-spacing: -1px;
-  line-height: 1;
-
-  @include media-query($on-laptop) {
-    font-size: 36px;
-  }
-}
-
-.post-content {
-  margin-bottom: $spacing-unit;
-
-  h2 {
-    font-size: 32px;
-
-    @include media-query($on-laptop) {
-      font-size: 28px;
-    }
-  }
-
-  h3 {
-    font-size: 26px;
-
-    @include media-query($on-laptop) {
-      font-size: 22px;
-    }
-  }
-
-  h4 {
-    font-size: 20px;
-
-    @include media-query($on-laptop) {
-      font-size: 18px;
-    }
-  }
+.animate {
+  -webkit-transition:all .25s;
+     -moz-transition:all .25s;
+      -ms-transition:all .25s;
+          transition:all .25s;
 }
 

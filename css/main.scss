@@ -12,7 +12,8 @@ $mono-font-family: Consolas, "Liberation Mono", Courier, monospace;
 $body-font-size:   14px;
 $body-font-weight: normal;
 $body-font-style: normal;
-$small-font-size:  $body-font-size * 0.875;
+$small-font-size:  0.8rem;
+$tiny-font-size: 0.6rem;
 $base-line-height: 1.5;
 $cursor-auto-value: auto;
 
@@ -94,7 +95,8 @@ figcaption {
 
 .serif { font-family: $serif-font-family; }
 
-.small { font-size: 0.8rem; }
+.small { font-size: $small-font-size; }
+.tiny { font-size: $tiny-font-size; }
 .quiet { color: $grey-color-light; }
 
 .center { text-align: center; }

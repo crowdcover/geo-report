@@ -4,12 +4,12 @@
 <body>
 
 <nav class="small-12 columns fill-dark phn keyline-bottom">
-  <ul class="small-12 medium-4 columns keyline-right man">
+  <ul class="small-12 medium-8 medium-push-2 columns">
     <li>
-      <h3 class="center"><a href="#">{{page.title}}</a></h3>
+      <h3 class="center serif"><a href="#">{{page.title}}</a></h3>
     </li>
   </ul>
-  <ul class="medium-8 columns inline-list right man">
+  <ul class="medium-2 columns inline-list right man">
     <li class="right pas"><a href="#">home</a></li>
   </ul>
 </nav>
@@ -19,7 +19,7 @@
 
     {% for section in page.sections %}
       <section class="animate{% if forloop.first %}active{% endif %}">
-        <h3 class="serif keyline-bottom pvs">{{ section.title }}</h3>
+        <h1 class="serif keyline-bottom pvs">{{ section.title }}</h1>
         {% if forloop.first %}
           <div class="small"><strong>By {{page.author}}</strong></div>
           <div class="small serif mbs">{{page.date}}</div>

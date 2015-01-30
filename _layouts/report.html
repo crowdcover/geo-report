@@ -21,10 +21,12 @@
       <section class="animate{% if forloop.first %}active{% endif %}"
                {% if section.latlng or section.zoom %}data-nav='{"latlng": [ {{section.latlng | join: ","}} ], "zoom": {{section.zoom}} }'{% endif %}
                {% if section.layers %}data-mapid='{{section.layers | join ","}}'{% endif %}>
-        <h1 class="serif keyline-bottom pvs">{{ section.title }}</h1>
+        {% if section.title %}<h1 class="serif keyline-bottom pvs">{{ section.title }}</h1>{% endif %}
         {% if forloop.first %}
-          <div class="small"><strong>By {{page.author}}</strong></div>
-          <div class="small serif mbs">{{page.date}}</div>
+          <div class="mvs">
+            <div class="small"><strong>By {{page.author}}</strong></div>
+            <div class="small serif">{{page.date}}</div>
+          </div>
         {% endif %}
         <!-- display section banner_image.
              If first section and there is no section banner_image specified, default to page banner_image -->

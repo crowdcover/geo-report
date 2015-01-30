@@ -53,7 +53,15 @@ $(document).foundation();
         context: '#report',
         offset: '70%'
       });
+
       // $('.navigate').on('click', 'a', this.navigate);
+
+      // refresh all Waypoints when window resizes
+      // (docs say this happens automatically, but doesn't appear so: http://imakewebthings.com/waypoints/api/refresh-all/)
+      $(window).on('resize', function(){
+        console.log('resize')
+        Waypoint.refreshAll();
+      });
     },
 
     reportScroll: function(direction) {

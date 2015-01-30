@@ -59,7 +59,6 @@ $(document).foundation();
       // refresh all Waypoints when window resizes
       // (docs say this happens automatically, but doesn't appear so: http://imakewebthings.com/waypoints/api/refresh-all/)
       $(window).on('resize', function(){
-        console.log('resize')
         Waypoint.refreshAll();
       });
     },

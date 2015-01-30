@@ -64,7 +64,11 @@
   window.jQuery || document.write('<script src="{{site.baseurl}}js/vendor/jquery.js"><\/script>')
   // simple hack to pass variables defined in Jekyll front matter to app.js
   // set opening latlng and zoom coordinates to those set for the first section
-  pageConfig = { latlng: [ {{page.sections[0].latlng | join: ","}} ] , zoom: {{page.sections[0].zoom}} };
+  pageConfig = {
+                 latlng: [ {{page.sections[0].latlng | join: ","}} ] , zoom: {{page.sections[0].zoom}},
+                 {% if page.data_source_name %}source_name: '{{page.data_source_name}}',{% endif %}
+                 {% if page.data_source_url %}source_url: '{{page.data_source_url}}'{% endif %}
+               };
 </script>
 <script src="{{site.baseurl}}js/vendor/jquery.waypoints.js"></script>
 <script src="{{site.baseurl}}js/foundation.min.js"></script>

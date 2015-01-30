@@ -33,12 +33,19 @@ $(document).foundation();
         return controlHTML[0];
       }
 
+      var infoControl = L.mapbox.infoControl().addInfo('<strong>Map Data</strong> &copy; <a href="//www.openstreetmap.org/">OpenStreetMap</a>');
+      if (pageConfig.source_name && pageConfig.source_url){
+        infoControl.addInfo('<a href="' + pageConfig.source_url + '" target="_blank">' + pageConfig.source_name + '</a>');
+      }else if(pageConfig.source_name){
+        infoControl.addInfo(pageConfig.source_name);
+      }
+
       $.extend(this.map, {
         reportLayers: {},
         reportControls: {
           zoom: L.control.zoom({position: 'topleft'}).addTo(this.map),
           scale: L.control.scale({position: 'bottomleft'}).addTo(this.map),
-          infoControl: L.mapbox.infoControl().addInfo('<strong>Map Data</strong> &copy; OpenStreetMap').addTo(this.map),
+          infoControl: infoControl.addTo(this.map),
           legend: L.mapbox.legendControl().addLegend('<h3 class="center keyline-bottom">Legend</h3><div class="legend-contents"></div>').addTo(this.map),
           grid: undefined,
           share: shareControl.addTo(this.map)

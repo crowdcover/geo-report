@@ -42,6 +42,7 @@ $(document).foundation();
 
       $.extend(this.map, {
         reportLayers: {},
+        reportVectors: {},
         reportControls: {
           zoom: L.control.zoom({position: 'topleft'}).addTo(this.map),
           scale: L.control.scale({position: 'bottomleft'}).addTo(this.map),
@@ -83,8 +84,10 @@ $(document).foundation();
           $this.addClass('active');
       }
       var nav = $this.data('nav'),
-          newLayerIds = $this.data('mapid'),
-          displayedLayerIds = report.getLayers();
+          newLayerIds = $this.data('tileid'),
+          newVectorId = $this.data('vector'),
+          displayedLayerIds = report.getLayers(),
+          displayedVectorId = report.getVector();
 
       if(nav){
         report.map.setView(nav.latlng, nav.zoom);
@@ -97,7 +100,6 @@ $(document).foundation();
         for(i=0; i<displayedLayerIds.length; i++){
           var displayedLayerId = displayedLayerIds[i];
           if(newLayerIds.indexOf(displayedLayerId) === -1){
-            console.log('displayedLayerId: ', displayedLayerId);
             report.changeLayer(displayedLayerId);
           }
         }
@@ -115,6 +117,14 @@ $(document).foundation();
           report.changeLayer(displayedLayerIds[i]);
         }
       }
+
+      if(newVectorId && newVectorId != displayedVectorId){
+        report.changeVector(newVectorId);
+      }else if(displayedVectorId){
+        // if no new vector data to add, and existing vector data, remove existing vector data
+        report.changeVector(displayedVectorId);
+      }
+
     },
 
     // map interaction functions
@@ -132,6 +142,23 @@ $(document).foundation();
     //   $this.parent('li').siblings('li').children('a.active').removeClass('active');
     //   $this.addClass('active');
     // },
+
+    changeVector: function(newVectorId){
+      if(! report.map.reportVectors[newVectorId]){
+        // if not cached, cache and add
+        $.getJSON('data/' + newVectorId + '.geojson', function(geojson){
+          report.map.reportVectors[newVectorId] = L.mapbox.featureLayer(geojson).addTo(report.map);
+        });
+      }else{
+        // else, add or remove
+        if(report.map.hasLayer(report.map.reportVectors[newVectorId])){
+          report.map.removeLayer(report.map.reportVectors[newVectorId]);
+        }else{
+          report.map.reportVectors[newVectorId].addTo(report.map);
+        }
+      }
+
+    },
 
     changeLayer: function(mapId){
       // initiate everything that should happen when a map layer is added/removed
@@ -177,6 +204,18 @@ $(document).foundation();
       }
 
       // this.leaflet_hash.trigger('move');
+    },
+
+    getVector: function(){
+      // return id of vector featureLayer
+        // currently, only one vector featureLayer can exist on the map
+      reportVectors = report.map.reportVectors;
+      for(mapId in reportVectors){
+        if(report.map.hasLayer(reportVectors[mapId])){
+          return mapId;
+        }
+      }
+      return undefined;
     },
 
     getLayers: function(){

@@ -124,31 +124,31 @@ $(document).foundation();
     //   $this.addClass('active');
     // },
 
-    changeLayer: function(mapId){
+    changeLayer: function(tileURL){
       // initiate everything that should happen when a map layer is added/removed
 
-      // cache tileLayer in report.map.reportLayers[mapId]
-      if(! report.map.reportLayers[mapId]){
-        report.map.reportLayers[mapId] = L.mapbox.tileLayer(mapId)
+      // cache tileLayer in report.map.reportLayers[tileURL]
+      if(! report.map.reportLayers[tileURL]){
+        report.map.reportLayers[tileURL] = L.tileLayer(tileURL)
       }
-      var tileLayer = this.map.reportLayers[mapId];
+      var tileLayer = this.map.reportLayers[tileURL];
 
       // if layer is present, run all remove layer actions
       if(this.map.hasLayer(tileLayer)){
         var layers = this.getLayers();
         // run all remove layer actions
         this.map.removeLayer(tileLayer);
-        this.removeLegend(mapId);
+        // this.removeLegend(tileURL);
 
         // if removed layer was highest layer, clear grids
-        if(mapId === layers[layers.length -1]){
-          this.clearGrids();
-          // if 1+ more layers on map, add grid of the new top layer
-          if(layers.length > 1){
-            var nextLayerId = layers[layers.length -2];
-            report.addGrid(nextLayerId);
-          }
-        }
+        // if(tileURL === layers[layers.length -1]){
+        //   this.clearGrids();
+        //   // if 1+ more layers on map, add grid of the new top layer
+        //   if(layers.length > 1){
+        //     var nextLayerId = layers[layers.length -2];
+        //     report.addGrid(nextLayerId);
+        //   }
+        // }
       }else{
         // run all add layer actions:
           // add layer to map; add legend; move layer-ui button
@@ -161,10 +161,10 @@ $(document).foundation();
         this.map.addLayer(tileLayer);
         tileLayer.setZIndex(topLayerZIndex + 1);
 
-        report.showLegend(mapId);
+        // report.showLegend(tileURL);
         // not very smart: simply remove all grids and add for the new layer
-        report.clearGrids();
-        report.addGrid(mapId);
+        // report.clearGrids();
+        // report.addGrid(tileURL);
       }
 
       // this.leaflet_hash.trigger('move');

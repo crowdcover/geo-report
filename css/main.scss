@@ -68,7 +68,13 @@ $on-laptop:        800px;
 /////////////// Custom Code //////////////////////////
 //////////////////////////////////////////////////////
 
-body { margin:0; padding:0; min-width: 940px; }
+body {
+  margin:0;
+  padding:0;
+  min-width: 940px;
+  word-wrap: break-word;
+}
+
 #report-container { position: absolute; top:41px; bottom:0; }
 #map { position:absolute; top: 0; bottom:0; right: 0; }
 

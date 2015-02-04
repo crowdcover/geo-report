@@ -89,8 +89,12 @@ $(document).foundation();
           displayedLayerIds = report.getLayers(),
           displayedVectorId = report.getVector();
 
-      if(nav){
+      if(nav && nav.latlng.length === 2 && nav.zoom){
         report.map.setView(nav.latlng, nav.zoom);
+      }else if(nav && nav.latlng.length === 2){
+        report.map.panTo(nav.latlng);
+      }else if(nav && nav.zoom){
+        report.map.setZoom(nav.zoom);
       }
 
       if(newLayerIds){

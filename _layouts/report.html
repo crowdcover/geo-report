@@ -15,7 +15,7 @@
 </nav>
 
 <div id="report-container" class="small-12">
-  <div id="report" class="small-12 medium-4 columns keyline-right fill-white">
+  <div id="report" class="small-4 columns keyline-right fill-white">
 
     {% for section in page.sections %}
       <section class="animate{% if forloop.first %}active{% endif %}"
@@ -53,7 +53,7 @@
     {% if page.footer %} <aside class="small quiet pvs keyline-top">{{page.footer}}</aside> {% endif %}
   </div>
 
-  <div id="map" class="small-12 medium-8 columns"></div>
+  <div id="map" class="small-8 columns"></div>
 </div>
 
 {{ content }}

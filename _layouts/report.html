@@ -20,7 +20,7 @@
     {% for section in page.sections %}
       <section class="animate{% if forloop.first %}active{% endif %}"
                {% if section.latlng or section.zoom %}data-nav='{"latlng": [ {{section.latlng | join: ","}} ], "zoom": {{section.zoom}} }'{% endif %}
-               {% if section.layers %}data-mapid='{{section.layers | join ","}}'{% endif %}>
+               {% if section.layers %}data-mapid='{{section.layers | join: ","}}'{% endif %}>
         <h1 class="serif keyline-bottom pvs">{{ section.title }}</h1>
         {% if forloop.first %}
           <div class="small"><strong>By {{page.author}}</strong></div>
@@ -62,7 +62,11 @@
   window.jQuery || document.write('<script src="{{site.baseurl}}js/vendor/jquery.js"><\/script>')
   // simple hack to pass variables defined in Jekyll front matter to app.js
   // set opening latlng and zoom coordinates to those set for the first section
-  pageConfig = { latlng: [ {{page.sections[0].latlng | join: ","}} ] , zoom: {{page.sections[0].zoom}} };
+  pageConfig = {
+    latlng: [ {{page.sections[0].latlng | join: ","}} ] ,
+    zoom: {{page.sections[0].zoom}} ,
+    baseUrl: '{{page.baseUrl}}'
+  };
 </script>
 <script src="{{site.baseurl}}js/vendor/jquery.waypoints.js"></script>
 <script src="{{site.baseurl}}js/foundation.min.js"></script>

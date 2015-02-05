@@ -47,8 +47,6 @@ $(document).foundation();
           zoom: L.control.zoom({position: 'topleft'}).addTo(this.map),
           scale: L.control.scale({position: 'bottomleft'}).addTo(this.map),
           infoControl: infoControl.addTo(this.map),
-          legend: L.mapbox.legendControl().addLegend('<h3 class="center keyline-bottom">Legend</h3><div class="legend-contents"></div>').addTo(this.map),
-          grid: undefined,
           share: shareControl.addTo(this.map)
         }
       });
@@ -99,7 +97,7 @@ $(document).foundation();
 
       if(newLayerIds){
         // for all existing layers, remove it unless it is present in newLayerIds
-        newLayerIds = newLayerIds.split();
+        newLayerIds = newLayerIds.split(',');
 
         for(i=0; i<displayedLayerIds.length; i++){
           var displayedLayerId = displayedLayerIds[i];
@@ -171,45 +169,22 @@ $(document).foundation();
       if(! report.map.reportLayers[mapId]){
         // construct tilelayer url template out of baseUrl and newLayerId
         var tileUrl = pageConfig.baseUrl.replace('{layerId}', mapId);
-        report.map.reportLayers[mapId] = L.tileLayer(tileUrl);
+        report.map.reportLayers[mapId] = L.tileLayer(tileUrl, {tms: true});
       }
       var tileLayer = this.map.reportLayers[mapId];
 
-      // if layer is present, run all remove layer actions
+      // if layer is present, remove layer
       if(this.map.hasLayer(tileLayer)){
-        var layers = this.getLayers();
-        // run all remove layer actions
         this.map.removeLayer(tileLayer);
-        this.removeLegend(mapId);
-
-        // if removed layer was highest layer, clear grids
-        if(mapId === layers[layers.length -1]){
-          this.clearGrids();
-          // if 1+ more layers on map, add grid of the new top layer
-          if(layers.length > 1){
-            var nextLayerId = layers[layers.length -2];
-            report.addGrid(nextLayerId);
-          }
-        }
       }else{
-        // run all add layer actions:
-          // add layer to map; add legend; move layer-ui button
-          // add grid
-
         // find zIndex of current top layer, or -1 if no current layers
         var layers = this.getLayers(),
             topLayerZIndex = this.getLayerZIndex(layers[layers.length -1]);
 
         this.map.addLayer(tileLayer);
         tileLayer.setZIndex(topLayerZIndex + 1);
-
-        report.showLegend(mapId);
-        // not very smart: simply remove all grids and add for the new layer
-        report.clearGrids();
-        report.addGrid(mapId);
       }
 
-      // this.leaflet_hash.trigger('move');
     },
 
     getVector: function(){
@@ -252,32 +227,6 @@ $(document).foundation();
     setLayerZIndex: function(mapId, zIndex){
       report.map.reportLayers[mapId].setZIndex(zIndex);
     },
-
-    showLegend: function(mapId){
-      var legendContents = $(report.map.reportControls.legend.getContainer()).find('.legend-contents');
-      $('<div>', {
-                  'class': 'report-legend space-bottom1',
-                  'data-id': mapId,
-                  html: mapId
-      }).prependTo(legendContents);
-    },
-
-    removeLegend: function(mapId){
-      $(report.map.reportControls.legend.getContainer()).find('.report-legend[data-id="' + mapId + '"]').remove();
-    },
-
-    addGrid: function(mapId){
-      gridLayer = L.mapbox.gridLayer(mapId).addTo(report.map);
-      report.map.reportControls.grid = L.mapbox.gridControl(gridLayer).addTo(report.map);
-    },
-
-    clearGrids: function(){
-      var gridControl = report.map.reportControls.grid
-      if (gridControl && gridControl._layer){
-        report.map.removeLayer(gridControl._layer);
-      }
-      $('.map-tooltip').remove();
-    }
 
   };
 

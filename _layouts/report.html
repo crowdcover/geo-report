@@ -69,7 +69,8 @@
                  latlng: [ {{page.sections[0].latlng | join: ","}} ] , zoom: {{page.sections[0].zoom}},
                  {% if page.data_source_name %}source_name: '{{page.data_source_name}}',{% endif %}
                  {% if page.data_source_url %}source_url: '{{page.data_source_url}}',{% endif %}
-                 baseUrl: '{{page.baseUrl}}'
+                 baseUrl: '{{ page.baseUrl }}',
+                 tileOrigins: [{% for origin in page.tileOrigins %}{'name':'{{origin.name}}','url':'{{origin.url}}'}{% unless forloop.last %},{% endunless %}{% endfor %}]
                };
 </script>
 <script src="{{site.baseurl}}js/vendor/jquery.waypoints.js"></script>

@@ -19,6 +19,15 @@ footer: |
 baseUrl: 'http://ebolageonode.org:8080/geoserver/gwc/service/tms/1.0.0/geonode:{layerId}@EPSG:900913@png/{z}/{x}/{y}.png'
 # find the layers here: http://ebolageonode.org:8080/geoserver/gwc/service/tms/1.0.0/
 
+tileOrigins2: [{'name':'egn','url':'http://ebolageonode.org:8080/geoserver/gwc/service/tms/1.0.0/geonode:{layerId}@EPSG:900913@png/{z}/{x}/{y}.png'},{'name':'wfp','url':'http://geonode.wfp.org:8080/geoserver/gwc/service/tms/1.0.0/geonode:{layerId}@EPSG:900913@png/{z}/{x}/{y}.png'}]
+
+tileOrigins:
+  - name: egn
+    url: http://ebolageonode.org:8080/geoserver/gwc/service/tms/1.0.0/geonode:{layerId}@EPSG:900913@png/{z}/{x}/{y}.png
+
+  - name: wfp
+    url: http://geonode.wfp.org/geoserver/gwc/service/tms/1.0.0/geonode:{layerId}@EPSG:900913@png/{z}/{x}/{y}.png
+
 sections:
   - title:
     banner_image:
@@ -39,7 +48,7 @@ sections:
     banner_image_source: Jim Hollander/European Pressphoto Agency
     latlng: [5.8, -9.3]
     zoom: 6
-    tile_layers: ['lbr_telc_pt_misc_transmissiontowers', 'lbr_policestnp_undp']
+    tile_layers: ['egn:lbr_telc_pt_misc_transmissiontowers', 'egn:lbr_policestnp_undp']
     vector_data:
     body: |
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo dolores sint est beatae et quam consequuntur veniam ad nesciunt. Dolore officiis excepturi amet tempore tempora consequuntur et ducimus doloremque facere placeat debitis, ipsa recusandae voluptatibus rem natus magni laboriosam aliquid incidunt, nihil esse ex provident atque nobis a. Dolorem fugit vitae quis nam et, deleniti, odio unde dolores. Ipsam, nihil.
@@ -53,7 +62,7 @@ sections:
     banner_image_source:
     latlng: [5.2, -9.2]
     zoom: 7
-    tile_layers: ['lbr_rdsl_unmil', 'lbr_hltfacp_undp']
+    tile_layers: ['egn:lbr_rdsl_unmil', 'egn:lbr_hltfacp_undp']
     vector_data:
     body: |
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, dolorem impedit rem nulla omnis voluptatum porro possimus, fuga eos necessitatibus excepturi veniam. Natus et ex harum amet ad exercitationem voluptate necessitatibus quam, non odit nobis asperiores tenetur tempora ipsam neque aperiam ipsa culpa repellendus dolorum expedita maiores ut vitae.
@@ -66,11 +75,22 @@ sections:
     banner_image_source:
     latlng: [6.9, -11.4]
     zoom: 9
-    tile_layers: ['lbr_lakeresa_lake_unmil']
+    tile_layers: ['egn:lbr_lakeresa_lake_unmil']
     vector_data:
     body: |
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, dolorem impedit rem nulla omnis voluptatum porro possimus, fuga eos necessitatibus excepturi veniam. Natus et ex harum amet ad exercitationem voluptate necessitatibus quam, non odit nobis asperiores tenetur tempora ipsam neque aperiam ipsa culpa repellendus dolorum expedita maiores ut vitae.
 
           Explicabo distinctio facilis, dolorem nesciunt at. Accusamus eveniet quam fugit, laborum sed sapiente? In iure laborum harum aspernatur saepe itaque, ratione amet, id ipsa facere fugit quaerat quis earum dolorem quas! Reiciendis voluptates nobis itaque ad fuga quidem harum facere quasi exercitationem, repellendus delectus aperiam eveniet at tenetur soluta perspiciatis natus placeat cum aut, quibusdam, doloribus totam dignissimos? Dolorem ullam veniam rerum iste facilis facere perferendis harum! Quisquam possimus voluptate, officiis sed harum sint quasi magni animi voluptates, soluta atque quos!
+
+  - title: "Slide 4: Freetown"
+    banner_image:
+    banner_image_caption:
+    banner_image_source:
+    latlng: [8.468285, -13.242686]
+    zoom: 13
+    tile_layers: ['egn:sle_heal_pt_unmeer_ebolacarefacilities','wfp:wld_trs_unhasroutes_wfp','wfp:wld_trs_ports_wfp','wfp:wld_poi_warehouses_wfp']
+    vector_data: 
+    body: |
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, dolorem impedit rem nulla omnis voluptatum porro possimus, fuga eos necessitatibus excepturi veniam. Natus et ex harum amet ad exercitationem voluptate necessitatibus quam, non odit nobis asperiores tenetur tempora ipsam neque aperiam ipsa culpa repellendus dolorum expedita maiores ut vitae.
 ---
 

@@ -162,16 +162,28 @@ $(document).foundation();
 
     },
 
-    changeLayer: function(mapId){
+    changeLayer: function(layerId){
       // initiate everything that should happen when a map layer is added/removed
 
       // cache tileLayer in report.map.reportLayers[mapId]
-      if(! report.map.reportLayers[mapId]){
+      if(! report.map.reportLayers[layerId]){
         // construct tilelayer url template out of baseUrl and newLayerId
-        var tileUrl = pageConfig.baseUrl.replace('{layerId}', mapId);
-        report.map.reportLayers[mapId] = L.tileLayer(tileUrl, {tms: true});
+        var a = layerId.split(":")
+        var tileOrigin = undefined;
+        for(var i = 0; i < pageConfig.tileOrigins.length; i++)
+        {
+          if(pageConfig.tileOrigins[i].name==a[0])
+          {
+            tileOrigin = pageConfig.tileOrigins[i];
+          }
+        }
+        if(tileOrigin != undefined)
+        {
+          var tileUrl = tileOrigin.url.replace('{layerId}', a[1]);
+          report.map.reportLayers[layerId] = L.tileLayer(tileUrl, {tms: true});
+        }
       }
-      var tileLayer = this.map.reportLayers[mapId];
+      var tileLayer = this.map.reportLayers[layerId];
 
       // if layer is present, remove layer
       if(this.map.hasLayer(tileLayer)){

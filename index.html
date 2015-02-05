@@ -12,6 +12,11 @@ banner_image_source: Menahem Kahana/Agence France-Presse — Getty Images
 footer: |
         This report is an entirely fictional example case study intended to demonstrate report editing capabilities.
 
+# map service base url
+  # in this example, we are using these tms: http://54.88.190.76/geoserver/gwc/service/tms/1.0.0/
+  # add '{layerId}' to denote the layer's title or id
+  # ':' is a yaml reserved character, so all urls and text that uses a colon must be enclosed in quotation marks
+baseUrl: 'http://api.tiles.mapbox.com/v4/{layerId}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFtZXMtbGFuZS1jb25rbGluZyIsImEiOiJ3RHBOc1BZIn0.edCFqVis7qgHPRgdq0WYsA'
 
 sections:
   - title:
@@ -43,7 +48,7 @@ sections:
     banner_image_source:
     latlng: [-5.64, 29.30]
     zoom: 7
-    tile_layers: [helsinki.drc_development_ii]
+    tile_layers: ['helsinki.drc_development_ii']
     vector_data:
     body: |
           Artisanal mining (ASM) is also widespread throughout the country and while legally bound to certain laws in the Mining Code of 2002, it is largely unregulated. ASM activities overlap many intact forest areas, nation parks and reserves all over the country and due to ongoing-armed conflict and poorly resourced park management, operators act with near impunity.

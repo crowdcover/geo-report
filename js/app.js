@@ -169,7 +169,9 @@ $(document).foundation();
 
       // cache tileLayer in report.map.reportLayers[mapId]
       if(! report.map.reportLayers[mapId]){
-        report.map.reportLayers[mapId] = L.mapbox.tileLayer(mapId)
+        // construct tilelayer url template out of baseUrl and newLayerId
+        var tileUrl = pageConfig.baseUrl.replace('{layerId}', mapId);
+        report.map.reportLayers[mapId] = L.tileLayer(tileUrl);
       }
       var tileLayer = this.map.reportLayers[mapId];
 

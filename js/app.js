@@ -98,9 +98,9 @@ $(document).foundation();
       }
 
       if(newLayerIds){
-        // for all existing layers, remove it unless it is present in newLayerIds
-        newLayerIds = newLayerIds.split();
+        newLayerIds = newLayerIds.split(',');
 
+        // for all existing layers, remove it unless it is present in newLayerIds
         for(i=0; i<displayedLayerIds.length; i++){
           var displayedLayerId = displayedLayerIds[i];
           if(newLayerIds.indexOf(displayedLayerId) === -1){
@@ -164,26 +164,25 @@ $(document).foundation();
 
     },
 
-    changeLayer: function(mapId){
+    changeLayer: function(newLayerId){
       // initiate everything that should happen when a map layer is added/removed
 
-      // cache tileLayer in report.map.reportLayers[mapId]
-      if(! report.map.reportLayers[mapId]){
+      // cache tileLayer in report.map.reportLayers[newLayerId]
+      if(! report.map.reportLayers[newLayerId]){
         // construct tilelayer url template out of baseUrl and newLayerId
-        var tileUrl = pageConfig.baseUrl.replace('{layerId}', mapId);
-        report.map.reportLayers[mapId] = L.tileLayer(tileUrl);
+        var layerURL = pageConfig.baseUrl.replace('{layerId}', newLayerId);
+        report.map.reportLayers[newLayerId] = L.tileLayer(layerURL);
       }
-      var tileLayer = this.map.reportLayers[mapId];
+      var tileLayer = this.map.reportLayers[newLayerId];
 
       // if layer is present, run all remove layer actions
       if(this.map.hasLayer(tileLayer)){
         var layers = this.getLayers();
-        // run all remove layer actions
         this.map.removeLayer(tileLayer);
-        this.removeLegend(mapId);
+        this.removeLegend(newLayerId);
 
         // if removed layer was highest layer, clear grids
-        if(mapId === layers[layers.length -1]){
+        if(newLayerId === layers[layers.length -1]){
           this.clearGrids();
           // if 1+ more layers on map, add grid of the new top layer
           if(layers.length > 1){
@@ -193,23 +192,17 @@ $(document).foundation();
         }
       }else{
         // run all add layer actions:
-          // add layer to map; add legend; move layer-ui button
-          // add grid
-
-        // find zIndex of current top layer, or -1 if no current layers
+          // add layer to map; add legend; add grid
         var layers = this.getLayers(),
             topLayerZIndex = this.getLayerZIndex(layers[layers.length -1]);
 
         this.map.addLayer(tileLayer);
         tileLayer.setZIndex(topLayerZIndex + 1);
 
-        report.showLegend(mapId);
-        // not very smart: simply remove all grids and add for the new layer
+        report.showLegend(newLayerId);
         report.clearGrids();
-        report.addGrid(mapId);
+        report.addGrid(newLayerId);
       }
-
-      // this.leaflet_hash.trigger('move');
     },
 
     getVector: function(){

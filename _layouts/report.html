@@ -20,8 +20,8 @@
     {% for section in page.sections %}
       <section class="animate{% if forloop.first %}active{% endif %}"
                {% if section.latlng or section.zoom %}data-nav='{"latlng": [ {{section.latlng | join: ","}} ], "zoom": {{section.zoom}} }'{% endif %}
-               {% if section.tile_layers %}data-tileid='{{section.tile_layers | join ","}}'{% endif %}
-               {% if section.vector_data %}data-vector='{{section.vector_data | join ","}}'{% endif %}>
+               {% if section.tile_layers %}data-tileid='{{section.tile_layers | join: ","}}'{% endif %}
+               {% if section.vector_data %}data-vector='{{section.vector_data | join: ","}}'{% endif %}>
         {% if section.title %}<h1 class="serif keyline-bottom pvs">{{ section.title }}</h1>{% endif %}
         {% if forloop.first %}
           <div class="mvs">
@@ -66,7 +66,8 @@
   // simple hack to pass variables defined in Jekyll front matter to app.js
   // set opening latlng and zoom coordinates to those set for the first section
   pageConfig = {
-                 latlng: [ {{page.sections[0].latlng | join: ","}} ] , zoom: {{page.sections[0].zoom}},
+                 latlng: [ {{page.sections[0].latlng | join: ","}} ] ,
+                 zoom: {{page.sections[0].zoom}},
                  {% if page.data_source_name %}source_name: '{{page.data_source_name}}',{% endif %}
                  {% if page.data_source_url %}source_url: '{{page.data_source_url}}',{% endif %}
                  baseUrl: '{{page.baseUrl}}'

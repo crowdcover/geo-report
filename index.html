@@ -1,21 +1,29 @@
 ---
+# ':' is a yaml reserved character, so all urls and text that uses a colon must be enclosed in 'quotation marks'
 layout: report
 title: Twangiza Report
 author: Leo Bottrill, Moabi
 date: January 20, 2015
 data_source_name: UNEP
-data_source_url: http://geodata.grid.unep.ch/
-banner_image: https://farm9.staticflickr.com/8578/16403038022_7ce6be2e6d.jpg
-banner_image_caption: Small-scale mining operations by a subsidiary of the mining company MINECOM
-banner_image_source: James Conkling/Agence France-Presse — Getty Images
+data_source_url: 'http://geodata.grid.unep.ch/'
+banner_image: 'https://farm8.staticflickr.com/7295/16267047947_31241a2abc.jpg'
+banner_image_caption: View of the hills around the Twangiza mine site.  The concession has been purchased by the Canadian-based mining company Banro
+banner_image_source: '[Banro](http://www.banro.com/s/Home.asp)'
 
 footer: |
-        This report is an entirely fictional example case study intended to demonstrate report editing capabilities.
+        The purpose of this report is to demonstrate the narrative mapping capability of Map-X - a proposed platform for monitoring extractive industries in fragile states. Information on Twangiza mine was collected from publicly available sources and complemented with data from the [Moabi DRC platform](rdc.moabi.org). For further information, please contact as at [info@crowdcover.org](mailto:info@crowdcover.org).
+
+        ### Sources
+        * Critchley, Barry. 1996. "Banro goes into Africa with $18M", The Financial Post, 5 June 1996, p. 5.
+        * Beaumont, Lucy. "Call of the Wild", Sydney Morning Herald.  Oct 6, 2008.  http://www.smh.com.au/world/call-of-the-wild-20081006-4u9x.html
+        * http://www.hydroworld.com/articles/2009/02/study-bolsters-plan-for-30-mw-ulindi-2-at-dr-congo-gold-mine.html
+        * http://www.forestpeoples.org/sites/fpp/files/publication/2010/10/drceng.pdf
+        * http://frameweb.org/adl/en-US/9836/file/1438/B.1%20JavelleAG-VeitPV_2012_Managing%20Mining%20n%20Conservation%20in%20DRC.pdf
+        * http://frameweb.org/adl/en-US/8208/file/1096/3_20111011ABCG-WWFartisanal%20final.pdf
 
 # map service base url
   # in this example, we are using these tms: http://54.88.190.76/geoserver/gwc/service/tms/1.0.0/
   # add '{layerId}' to denote the layer's title or id
-  # ':' is a yaml reserved character, so all urls and text that uses a colon must be enclosed in quotation marks
 baseUrl: 'http://api.tiles.mapbox.com/v4/{layerId}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFtZXMtbGFuZS1jb25rbGluZyIsImEiOiJ3RHBOc1BZIn0.edCFqVis7qgHPRgdq0WYsA'
 
 sections:
@@ -47,13 +55,13 @@ sections:
   - title: Twangiza Concession Location
     banner_image: https://farm8.staticflickr.com/7338/16265262368_a79e77eae6.jpg
     banner_image_caption: Banro mining operations at the Twangiza concession
-    banner_image_source: Leo Bottrill, Moabi
+    banner_image_source: '[Banro](http://www.banro.com/s/Home.asp)'
     latlng: [-2.7, 28.5]
     zoom: 10
     tile_layers: ['crowdcover.moabi_forest_cover', 'crowdcover.moabi_transport', 'crowdcover.moabi_mining']
     vector_data:
     body: |
-          It is within this context that Banro, a Canadian mining company, have been developing a series of mining concessions in South Kivu, in the troubled eastern region of DRC. Banro has 13 Exploitation Permits, Banro was awarded 14 exploration permits in March 2007 covering 2,638 square kilometres and located between its Twangiza and Lugushwa projects. Applications for additional exploration permits contiguous to and located between the Company's Lugushwa and Namoya projects, along with areas south of Twangiza, are also pending (http://www.banro.com/s/Properties.asp)
+          It is within this context that Banro, a Canadian mining company, have been developing a series of mining concessions in South Kivu, in the troubled eastern region of DRC. Banro has 13 Exploitation Permits, Banro was awarded 14 exploration permits in March 2007 covering 2,638 square kilometres and located between its Twangiza and Lugushwa projects. Applications for additional exploration permits contiguous to and located between the Company's Lugushwa and Namoya projects, along with areas south of Twangiza, are also pending [1](http://www.banro.com/s/Properties.asp).
 
   - title: Environmental Concerns
     banner_image: https://farm9.staticflickr.com/8563/16267048357_b0b5b21a09.jpg
@@ -67,9 +75,9 @@ sections:
           The Twangiza concessions straddle two protected areas – Kahuzu-Biega National Park in the north and Itombwe Nature Reserve to the south – overlapping both of them. Kahuzu-Biega is designated as World Heritage Site under criterion (x) for its outstanding biodiversity, including forest elephants and gorillas. In a
 
   - title: Artisanal Mining Presence
-    banner_image:
-    banner_image_caption:
-    banner_image_source:
+    banner_image: https://farm8.staticflickr.com/7337/16271804970_c4cc916d8e.jpg
+    banner_image_caption: Militia controlled ASM operations bordering Itombwe Nature Reserve
+    banner_image_source: '[Banro](http://www.banro.com/s/Home.asp)'
     latlng:
     zoom:
     tile_layers: ['crowdcover.moabi_forest_cover', 'crowdcover.twangiza_mining', 'crowdcover.moabi_protected']
@@ -86,21 +94,21 @@ sections:
     tile_layers: ['crowdcover.moabi_forest_cover', 'crowdcover.twangiza_mining', 'crowdcover.moabi_protected', 'crowdcover.moabi_transport', 'crowdcover.moabi_hydropower']
     vector_data: artisanal-mines
     body: |
-          Further development of Twangiza concessions will require substantial infrastructure investments. To help power their gold mining operations, Banro plans to part finance a 30MW hydroelectric dam on the Ulindi River [1](http://www.hydroworld.com/articles/2009/02/study-bolsters-plan-for-30-mw-ulindi-2-at-dr-congo-gold-mine.html).
+          Further development of Twangiza concessions will require substantial infrastructure investments. To help power their gold mining operations, Banro plans to part finance a 30MW hydroelectric dam on the Ulindi River [2](http://www.hydroworld.com/articles/2009/02/study-bolsters-plan-for-30-mw-ulindi-2-at-dr-congo-gold-mine.html).
 
-          One study estimates that 1,860 households comprising 11,532 individuals, mostly farmers or artisanal miners, residing between the Twangiza and Lulimbohwe rivers would be affected by the project. More than 1,200 households would require resettlement [2](http://www.miningmarkets.ca/news/john-kaiser-s-ounces-in-the-ground-part-ii--banro-s-twangiza/1000340713/?&er=NA). While there is no data on the precise location of this mine, there are at least two other hydropower projects also planned in the area as well one existing project which may require rehabilitation.
+          One study estimates that 1,860 households comprising 11,532 individuals, mostly farmers or artisanal miners, residing between the Twangiza and Lulimbohwe rivers would be affected by the project. More than 1,200 households would require resettlement [3](http://www.miningmarkets.ca/news/john-kaiser-s-ounces-in-the-ground-part-ii--banro-s-twangiza/1000340713/?&er=NA). While there is no data on the precise location of this mine, there are at least two other hydropower projects also planned in the area as well one existing project which may require rehabilitation.
 
 
   - title: Indigenous Communities
-    banner_image:
-    banner_image_caption:
-    banner_image_source:
+    banner_image: 'https://farm8.staticflickr.com/7357/16452953165_761c3a167d.jpg'
+    banner_image_caption: Kahuzi Biega National Park Entrance
+    banner_image_source: 'Wikipedia: Tintazul'
     latlng:
     zoom: 8
     tile_layers: ['crowdcover.moabi_indigenous', 'crowdcover.moabi_forest_cover', 'crowdcover.twangiza_mining']
     vector_data:
     body: |
-          The influx of workers to the Twangiza mine could further exacerbate conflicts over land and resources with local communities, particularly with pygmy communities.  Barhwa and Babuluko pygmy communities were expelled from Kuhuzi Biega when it was created forcing many to make marginal liveliehoods on the outskirts of the park [3](http://www.forestpeoples.org/sites/fpp/files/publication/2010/10/drceng.pdf).
+          The influx of workers to the Twangiza mine could further exacerbate conflicts over land and resources with local communities, particularly with pygmy communities.  Barhwa and Babuluko pygmy communities were expelled from Kuhuzi Biega when it was created forcing many to make marginal liveliehoods on the outskirts of the park [4](http://www.forestpeoples.org/sites/fpp/files/publication/2010/10/drceng.pdf).
 
 ---
 

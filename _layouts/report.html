@@ -35,13 +35,13 @@
           <figure>
             <img src="{{section.banner_image}}" alt="banner image">
             <figcaption>{{section.banner_image_caption}}</figcaption>
-            <figcaption><strong>Credit </strong>{{section.banner_image_source}}</figcaption>
+            <figcaption><strong>Credit </strong>{{section.banner_image_source | markdownify}}</figcaption>
           </figure>
         {% elsif forloop.first %}
           <figure>
             <img src="{{page.banner_image}}" alt="banner image">
             <figcaption>{{page.banner_image_caption}}</figcaption>
-            <figcaption><strong>Credit </strong>{{page.banner_image_source}}</figcaption>
+            <figcaption><strong>Credit </strong>{{page.banner_image_source | markdownify}}</figcaption>
           </figure>
         {% endif %}
 
@@ -50,7 +50,7 @@
       </section>
     {% endfor %}
 
-    {% if page.footer %} <aside class="small quiet pvs keyline-top">{{page.footer}}</aside> {% endif %}
+    {% if page.footer %} <aside class="small quiet pvs keyline-top">{{page.footer | markdownify}}</aside> {% endif %}
   </div>
 
   <div id="map" class="small-8 columns"></div>

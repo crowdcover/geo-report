@@ -97,17 +97,25 @@ nav {
 }
 
 figure{ margin: 12px 0 22px; }
-figcaption {
+figcaption,
+figcaption p,
+figcaption a {
   font-size: 0.65rem;
   color: $grey-color-light;
   margin-bottom: 6px;
-}
+  }
+  figcaption p { display: inline; }
+  figcaption a { text-decoration: underline; }
 
 .serif { font-family: $serif-font-family; }
 
 .small { font-size: $small-font-size; }
 .tiny { font-size: $tiny-font-size; }
-.quiet { color: $grey-color-light; }
+.quiet {
+  color: $grey-color-light;
+  h1,h2,h3,h4,h5,h6 { color: $grey-color-light; }
+}
+
 
 .center { text-align: center; }
 

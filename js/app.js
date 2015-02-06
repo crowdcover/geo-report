@@ -151,7 +151,12 @@ $(document).foundation();
       if(! report.map.reportVectors[newVectorId]){
         // if not cached, cache and add
         $.getJSON('data/' + newVectorId + '.geojson', function(geojson){
-          report.map.reportVectors[newVectorId] = L.mapbox.featureLayer(geojson).addTo(report.map);
+          // report.map.reportVectors[newVectorId] = L.mapbox.featureLayer(geojson).addTo(report.map);
+          var mines = new L.MarkerClusterGroup();
+
+          mines.addLayer(L.mapbox.featureLayer(geojson));
+          mines.addTo(report.map);
+          report.map.reportVectors[newVectorId] = mines;
         });
       }else{
         // else, add or remove

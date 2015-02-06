@@ -80,7 +80,7 @@ body {
 
 #report {
   position: absolute; top: 0; bottom: 0; overflow: scroll;
-  section { min-height: 100%; opacity: 0.2; margin-bottom: 40px; }
+  section { min-height: 70%; opacity: 0.2; margin-bottom: 40px; }
   section.active { opacity: 1; }
   img { display: block; margin: 2px auto 12px; }
   h1 { font-size: 2rem; }

@@ -152,11 +152,44 @@ $(document).foundation();
         // if not cached, cache and add
         $.getJSON('data/' + newVectorId + '.geojson', function(geojson){
           // report.map.reportVectors[newVectorId] = L.mapbox.featureLayer(geojson).addTo(report.map);
-          var mines = new L.MarkerClusterGroup();
+          var mineLayer = L.mapbox.featureLayer(geojson).eachLayer(function(marker){
+            // set icon style for all icons
+            var markerOptions = {
+              'marker-color': '#EE8433',
+              'marker-size': 'small'
+            };
+            // set property-specific icons
+            var markerType = marker.toGeoJSON().properties['MINERAL_1']
+            if(markerType === 'Cassiterite'){
+              markerOptions['marker-symbol'] = 'c';
+            }else if(markerType === 'Diamond'){
+              markerOptions['marker-symbol'] = 'd';
+            }else if(markerType === 'Gold'){
+              markerOptions['marker-symbol'] = 'g';
+            }else if(markerType === 'Wolframite'){
+              markerOptions['marker-symbol'] = 'w';
+            }
+            marker.setIcon(L.mapbox.marker.icon(markerOptions))
+          });
+          var mineCluster = new L.MarkerClusterGroup({
+            // iconCreateFunction: function(cluster){
+            //   return new L.mapbox.marker.icon({
+            //     'marker-symbol': cluster.getChildCount(),
+            //     'marker-size': 'small',
+            //     'marker-color': '#F0AD77'
+            //   })
+            // },
+            polygonOptions: {
+              fillColor: '#F0AD77',
+              color: '#81461a',
+              weight: 3,
+              opacity: 0.8,
+              fillOpacity: 0.4
+            }
+          });
 
-          mines.addLayer(L.mapbox.featureLayer(geojson));
-          mines.addTo(report.map);
-          report.map.reportVectors[newVectorId] = mines;
+          mineCluster.addLayer(mineLayer);
+          report.map.reportVectors[newVectorId] = mineCluster.addTo(report.map);
         });
       }else{
         // else, add or remove

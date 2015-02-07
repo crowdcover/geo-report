@@ -1,0 +1,115 @@
+@import 'palette';
+
+.leaflet-container {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.map-tooltip,
+.map-legends {
+  background-color: $light;
+  background-color: $lightTransparent;
+  border: 1px solid #bbb;
+  border-radius: 0;
+  box-shadow: rgba(0,0,0,0.1) 0 0 8px 4px;
+  }
+  .map-legends .map-legend {
+    width: 260px;
+    max-height: 400px;
+    // padding: 0 18px 0 0;
+    padding: 0 !important;
+    margin: 10px 0 10px 10px;
+    overflow: auto;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  .map-legends .map-legend h2 {
+    font-size: 20px;
+    padding-bottom: 6px;
+  }
+
+.moabi-legend{
+  margin-bottom: 8px;
+}
+  .moabi-legend .block {
+    height: 18px;
+    width: 28px;
+    float: left;
+    margin-right: 8px;
+    border: 1px solid #888;
+  }
+  .moabi-legend .legend-icon {
+    height: 18px;
+    width: 28px;
+    margin-right: 8px;
+  }
+  .moabi-legend .legend-icon+h3 {
+    display: inline;
+  }
+  .moabi-legend h3 {
+    font-size: 13px;
+    margin-bottom: 2px !important;
+    font-weight: 500;
+  }
+  .moabi-legend h3.micro {
+    font-size: 11px;
+  }
+  .moabi-legend table {
+    margin-bottom: 2px;
+  }
+  .moabi-legend table th {
+    font-weight: 400;
+    padding: 0;
+  }
+  .moabi-legend table td {
+    height: 12px;
+    border: 1px solid #ddd;
+    border-right: 0;
+    width: 46px;
+  }
+  .moabi-legend table td:last-child {
+    border-right: 1px solid #ddd;
+  }
+  .moabi-legend .legend-icon.dot {
+    border: 1px solid #444;
+    height: 22px;
+    width: 22px;
+    margin: 0 11px 0px 3px;
+    padding: 2px;
+    border-radius: 50%;
+  }
+  .moabi-legend .legend-source { margin-left: 8px; }
+  /*move legend below tooltip*/
+  .leaflet-bottom.leaflet-right { z-index: 1;}
+
+
+.map-tooltip {
+  width: 272px;
+  font: 14px/20px 'Open Sans', sans-serif;
+  }
+  .map-tooltip .attr-table {
+    max-height: 280px;
+    overflow: auto;
+  }
+  .map-tooltip table {
+    margin-bottom: 0;
+  }
+  .map-tooltip table td{
+    padding: 4px;
+  }
+  .map-tooltip table td:last-child{
+    padding-right: 18px;
+  }
+  .map-tooltip table tr:last-child td {
+    border-bottom: 0;
+  }
+
+.double-stroke {
+  box-shadow: inset 0 0 0 3px rgba(100, 100, 100, 0.2);
+}
+
+.striped {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAgMAAAC5YVYYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACVBMVEWZmZmZmZn///+JQwtGAAAAAXRSTlMAQObYZgAAAAFiS0dEAmYLfGQAAAAJcEhZcwAALiMAAC4jAXilP3YAAAAbSURBVAjXY3BgZWAQZWAIYWAMYGB1gDAZAhgBFtcB/4QtqrAAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTQtMDEtMDlUMTY6NTU6NDQtMDU6MDAXVyIiAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTAxLTA5VDE2OjU1OjQ0LTA1OjAwZgqangAAAABJRU5ErkJggg==)
+}

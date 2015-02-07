@@ -33,12 +33,12 @@ sections:
     banner_image_source:
     latlng: [-2.5, 22.8]
     zoom: 6
-    tile_layers: ['crowdcover.moabi_forest_cover', 'crowdcover.moabi_mining', 'crowdcover.moabi_transport']
+    tile_layers: ['crowdcover.moabi_forest_cover', 'crowdcover.moabi_mining']
     vector_data:
     body: |
           Existing and planned mining extends across vast swathes of DRC, including much of the forest. There are 590 mining companies with a total of 6,727 permits of which 3,006 are owned by either individual or industrial mining companies and over 152 are identified as artisanal. Mining permits cover over 39% of the DRC’s total land area with 24% of total intact forest areas directly overlapping with mining permits. This will inevitably lead to potential conflicts between conservation and extractives industries.
 
-          To help mitigate potential impacts, risks need to be identified at the earliest stage of planning. This report highlightsa few of the potential risk associate with gold mining operations currently being implemented in South Kivu DRC by Banro, a Canadian mining company.
+          To help mitigate potential impacts, risks need to be identified at the earliest stage of planning. This report highlights a few of the potential risk associate with gold mining operations currently being implemented in South Kivu DRC by Banro, a Canadian mining company.
 
 
   - title: Artisanal Mining
@@ -46,7 +46,7 @@ sections:
     banner_image_caption: Militias in Eastern DRC are frequently in control of artisanal mining operations, providing them with a steady source of revenue.
     banner_image_source: WWF
     latlng: [-2.2, 28.2]
-    zoom: 6
+    zoom: 7
     tile_layers: ['crowdcover.moabi_forest_cover']
     vector_data: artisanal-mines
     body: |
@@ -111,4 +111,96 @@ sections:
           The influx of workers to the Twangiza mine could exacerbate conflicts over land and resources with local communities, particularly with pygmy communities.  Barhwa and Babuluko pygmy communities were expelled from Kuhuzi Biega when it was created forcing many to make marginal livelihoods on the outskirts of the park. However, further investigation is required to investigate risk, evaluate Free Prior and Informed consent of affected communities, and develop appropriate impact mitigation programs [4](http://www.forestpeoples.org/sites/fpp/files/publication/2010/10/drceng.pdf).
 
 ---
+<div id="legendStorage" style="display:none;">
+  <div class="moabi-legend" data-id="crowdcover.moabi_forest_cover">
+    <h3>Forest Cover(%), 2000</h3>
+      <table class='fixed'>
+        <thead>
+          <tr>
+            <th class='center'>10</th>
+            <th class='center'>40</th>
+            <th class='center'>60</th>
+            <th class='center'>90</th>
+            <th class='center'>100</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style='background-color: #FCFBF7;'></td>
+            <td style='background-color: #F8E8C6;'></td>
+            <td style='background-color: #C9CA85;'></td>
+            <td style='background-color: #878F45;'></td>
+            <td style='background-color: #50551C;'></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
 
+  <div class="moabi-legend" data-id="crowdcover.moabi_mining">
+    <h3>Mining Concessions</h3>
+    <div>
+      <div class='block double-stroke' style='background-color: #F9F9F9'></div>
+      <div>Research Permits</div>
+    </div>
+    <div>
+      <div class='block double-stroke' style='background-color: #FFEF35'></div>
+      <div>Exploration Permits</div>
+    </div>
+    <div>
+      <div class='block double-stroke striped' style='background-color: #FFE420'></div>
+      <div>Exploitation Permits</div>
+    </div>
+  </div>
+
+  <div class="moabi-legend" data-id="crowdcover.twangiza_mining">
+    <h3>Mining Concessions</h3>
+    <div>
+      <div class='block double-stroke' style='background-color: #F9F9F9'></div>
+      <div>Research Permits</div>
+    </div>
+    <div>
+      <div class='block double-stroke' style='background-color: #FFEF35'></div>
+      <div>Exploration Permits</div>
+    </div>
+    <div>
+      <div class='block double-stroke striped' style='background-color: #FFE420'></div>
+      <div>Exploitation Permits</div>
+    </div>
+  </div>
+
+  <div class="moabi-legend" data-id="crowdcover.moabi_protected">
+      <div>
+        <div class='block' style='background-color: #d0ffab; border: 1px dashed #888'></div>
+        <h3>Protected Areas</h3>
+      </div>
+  </div>
+
+  <div class="moabi-legend" data-id="crowdcover.moabi_transport">
+    <div>
+      <span class='legend-icon' style='color: #F8CC00;'>━━</span>
+      <h3>Road Rehabilitation Projects</h3>
+    </div>
+  </div>
+
+  <div class="moabi-legend" data-id="crowdcover.moabi_indigenous">
+    <div>
+      <div class='block double-stroke' style='background-color: #8697d1'></div>
+      <h3>Indigenous Lands</h3>
+    </div>
+  </div>
+
+  <div class="moabi-legend" data-id="crowdcover.moabi_hydropower">
+    <h3>Hydroelectric Power</h3>
+    <div style="margin-bottom:4px;">
+      <img class='legend-icon dot' style='border-color: #DEA2A9;' src='{{site.baseurl}}/img/dam_border.svg'><span class='micro'>Existing Dam</span>
+    </div>
+    <div>
+      <img class='legend-icon dot' style='border-color: #DEA2A9;' src='{{site.baseurl}}/img/dam_gray_border.svg'><span class='micro'>Planned Dam</span>
+    </div>
+  </div>
+
+  <div class="moabi-legend" data-id="artisanal-mines">
+    <img class="legend-icon" src="{{site.baseurl}}/img/artisanal-mine.png" style="height: 24px; width: auto;"/><h3>Artisanal Mines</h3>
+  </div>
+
+</div>

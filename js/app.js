@@ -46,8 +46,8 @@ $(document).foundation();
         reportControls: {
           zoom: L.control.zoom({position: 'topleft'}).addTo(this.map),
           scale: L.control.scale({position: 'bottomleft'}).addTo(this.map),
+          legend: L.mapbox.legendControl().addLegend('<h2 class="center keyline-bottom serif">Legend</h2><div id="legend-contents"></div>').addTo(this.map),
           infoControl: infoControl.addTo(this.map),
-          legend: L.mapbox.legendControl().addLegend('<h3 class="center keyline-bottom">Legend</h3><div class="legend-contents"></div>').addTo(this.map),
           grid: undefined,
           share: shareControl.addTo(this.map)
         }
@@ -195,13 +195,16 @@ $(document).foundation();
 
           mineCluster.addLayer(mineLayer);
           report.map.reportVectors[newVectorId] = mineCluster.addTo(report.map);
+          report.showLegend(newVectorId);
         });
       }else{
         // else, add or remove
         if(report.map.hasLayer(report.map.reportVectors[newVectorId])){
           report.map.removeLayer(report.map.reportVectors[newVectorId]);
+          report.removeLegend(newVectorId);
         }else{
           report.map.reportVectors[newVectorId].addTo(report.map);
+          report.showLegend(newVectorId);
         }
       }
 
@@ -290,16 +293,20 @@ $(document).foundation();
     },
 
     showLegend: function(mapId){
-      var legendContents = $(report.map.reportControls.legend.getContainer()).find('.legend-contents');
-      $('<div>', {
-                  'class': 'report-legend space-bottom1',
-                  'data-id': mapId,
-                  html: mapId
-      }).prependTo(legendContents);
+      var legendContents = $(report.map.reportControls.legend.getContainer()).find('#legend-contents'),
+          legendStorage = $('#legendStorage');
+
+      legendContents.prepend(legendStorage.find('[data-id="' + mapId + '"]') );
+      // $('<div>', {
+      //             'class': 'moabi-legend space-bottom1',
+      //             'data-id': mapId,
+      //             html: mapId
+      // }).prependTo(legendContents);
     },
 
     removeLegend: function(mapId){
-      $(report.map.reportControls.legend.getContainer()).find('.report-legend[data-id="' + mapId + '"]').remove();
+      var legend = $(report.map.reportControls.legend.getContainer()).find('.moabi-legend[data-id="' + mapId + '"]');
+      $('#legendStorage').prepend(legend);
     },
 
     addGrid: function(mapId){

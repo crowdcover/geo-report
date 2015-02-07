@@ -159,18 +159,23 @@ $(document).foundation();
               'marker-size': 'small'
             };
             // set property-specific icons
-            var markerType = marker.toGeoJSON().properties['MINERAL_1']
-            if(markerType === 'Cassiterite'){
+            var markerProperties = marker.toGeoJSON().properties
+            if(markerProperties['MINERAL_1'] === 'Cassiterite'){
               markerOptions['marker-symbol'] = 'c';
-            }else if(markerType === 'Diamond'){
+            }else if(markerProperties['MINERAL_1'] === 'Diamond'){
               markerOptions['marker-symbol'] = 'd';
-            }else if(markerType === 'Gold'){
+            }else if(markerProperties['MINERAL_1'] === 'Gold'){
               markerOptions['marker-symbol'] = 'g';
-            }else if(markerType === 'Wolframite'){
+            }else if(markerProperties['MINERAL_1'] === 'Wolframite'){
               markerOptions['marker-symbol'] = 'w';
             }
-            marker.setIcon(L.mapbox.marker.icon(markerOptions))
+            marker.setIcon(L.mapbox.marker.icon(markerOptions));
+            marker.bindPopup(['<strong>Name: </strong>', markerProperties['NAME'], '<br>',
+                              '<strong>Resource: </strong>', markerProperties['MINERAL_1'], '<br>',
+                              '<strong>Armed Group: </strong>', markerProperties['ARMED_GROU']].join('')
+                            );
           });
+
           var mineCluster = new L.MarkerClusterGroup({
             // iconCreateFunction: function(cluster){
             //   return new L.mapbox.marker.icon({

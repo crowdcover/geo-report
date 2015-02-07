@@ -76,7 +76,7 @@ body {
   word-wrap: break-word;
 }
 
-#report-container { position: absolute; top:41px; bottom:0; }
+#report-container { position: absolute; top:58px; bottom:0; }
 #map { position:absolute; top: 0; bottom:0; right: 0; }
 
 #report {
@@ -91,6 +91,9 @@ body {
 }
 
 nav {
+  .logo a{ color: #fff; }
+  .logo a span{ color: $secondary-color; }
+  .logo a:hover span{ color: $primary-color; }
   a { color: $secondary-color; }
   a:hover { color: $primary-color; }
   h3{ margin-bottom: 0; }

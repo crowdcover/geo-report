@@ -167,21 +167,18 @@ $(document).foundation();
 
       // cache tileLayer in report.map.reportLayers[mapId]
       if(! report.map.reportLayers[layerId]){
-        // construct tilelayer url template out of baseUrl and newLayerId
-        var a = layerId.split(":")
-        var tileOrigin = undefined;
-        for(var i = 0; i < pageConfig.tileOrigins.length; i++)
-        {
-          if(pageConfig.tileOrigins[i].name==a[0])
-          {
-            tileOrigin = pageConfig.tileOrigins[i];
-          }
+        // construct tilelayer url template out of tileOrigins and newLayerId
+        var tileOriginKey = layerId.split(":")[0],
+            layerName = layerId.split(":")[1],
+            tileOrigin = pageConfig.tileOrigins[tileOriginKey]
+
+        if(! tileOrigin){
+          console.log('tileOriginKey ' + tileOriginKey + 'is not valid');
+          return false;
         }
-        if(tileOrigin != undefined)
-        {
-          var tileUrl = tileOrigin.url.replace('{layerId}', a[1]);
-          report.map.reportLayers[layerId] = L.tileLayer(tileUrl, {tms: true});
-        }
+
+        var tileUrl = tileOrigin.replace('{layerId}', layerName);
+        report.map.reportLayers[layerId] = L.tileLayer(tileUrl, {tms: true});
       }
       var tileLayer = this.map.reportLayers[layerId];
 

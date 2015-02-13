@@ -12,12 +12,9 @@ banner_image_source: Menahem Kahana/Agence France-Presse — Getty Images
 footer: |
         This report is an entirely fictional example case study intended to demonstrate report editing capabilities.
 
-# map service base url
-  # in this example, we are using these tms: http://54.88.190.76/geoserver/gwc/service/tms/1.0.0/
-  # add '{layerId}' to denote the layer's title or id
-  # ':' is a yaml reserved character, so all urls and text that uses a colon must be enclosed in quotation marks
-baseUrl: 'http://ebolageonode.org:8080/geoserver/gwc/service/tms/1.0.0/geonode:{layerId}@EPSG:900913@png/{z}/{x}/{y}.png'
-# find the layers here: http://ebolageonode.org:8080/geoserver/gwc/service/tms/1.0.0/
+# map service tileOrigin url(s)
+  # add '{layerId}' to denote the layer's id
+  # find the layers here: http://ebolageonode.org:8080/geoserver/gwc/service/tms/1.0.0/
 
 tileOrigins:
   - name: egn
@@ -80,14 +77,14 @@ sections:
 
           Explicabo distinctio facilis, dolorem nesciunt at. Accusamus eveniet quam fugit, laborum sed sapiente? In iure laborum harum aspernatur saepe itaque, ratione amet, id ipsa facere fugit quaerat quis earum dolorem quas! Reiciendis voluptates nobis itaque ad fuga quidem harum facere quasi exercitationem, repellendus delectus aperiam eveniet at tenetur soluta perspiciatis natus placeat cum aut, quibusdam, doloribus totam dignissimos? Dolorem ullam veniam rerum iste facilis facere perferendis harum! Quisquam possimus voluptate, officiis sed harum sint quasi magni animi voluptates, soluta atque quos!
 
-  - title: "Slide 4: Freetown"
+  - title: "Slide 5: Freetown"
     banner_image:
     banner_image_caption:
     banner_image_source:
     latlng: [8.468285, -13.242686]
     zoom: 13
     tile_layers: ['egn:sle_heal_pt_unmeer_ebolacarefacilities','wfp:wld_trs_unhasroutes_wfp','wfp:wld_trs_ports_wfp','wfp:wld_poi_warehouses_wfp']
-    vector_data: 
+    vector_data:
     body: |
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, dolorem impedit rem nulla omnis voluptatum porro possimus, fuga eos necessitatibus excepturi veniam. Natus et ex harum amet ad exercitationem voluptate necessitatibus quam, non odit nobis asperiores tenetur tempora ipsam neque aperiam ipsa culpa repellendus dolorum expedita maiores ut vitae.
 ---
